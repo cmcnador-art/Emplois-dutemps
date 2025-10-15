@@ -10,7 +10,18 @@ url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap'
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
 
+.logo {
+  width: 120px;
+  margin-bottom: 10px;
+}
 body{
   background:var(--bg);
   color:var(--text-dark);
@@ -19,13 +30,7 @@ body{
   min-height:100vh;
 }
 
-/* Header */
-.header{
-  background:linear-gradient(135deg,var(--accent-color),var(--main-color));
-  padding:14px 12px;
-  text-align:center;
-  color:#fff;
-}
+
 .logo-container{
   display:flex;
   justify-content:center;
