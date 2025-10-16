@@ -12,41 +12,17 @@
       <img src="cmc-logo.png" alt="Logo CMC Oriental" class="logo-cmc" />
     </div>
     <h1 class="title">Emplois du Temps – CMC Oriental Nador</h1>
-    <p class="subtitle">Choisissez votre spécialité</p>
+    <p class="subtitle" id="pageSubtitle">Choisissez votre spécialité</p>
   </header>
 
   <main class="content">
     <h2 class="section-title" id="poleName">Pôle</h2>
 
-    <div class="specialties-list">
-      <div class="specialty">
-        <button class="card" onclick="toggleYears('dev-digital')">Développement Digital</button>
-        <div id="dev-digital" class="years">
-          <button class="year-btn" onclick="goTo('groupes.html?s=devdigital&y=1')">1ère Année</button>
-          <button class="year-btn" onclick="goTo('groupes.html?s=devdigital&y=2')">2ème Année</button>
-        </div>
-      </div>
-
-      <div class="specialty">
-        <button class="card" onclick="toggleYears('infographie')">Infographie</button>
-        <div id="infographie" class="years">
-          <button class="year-btn" onclick="goTo('groupes.html?s=infographie&y=1')">1ère Année</button>
-          <button class="year-btn" onclick="goTo('groupes.html?s=infographie&y=2')">2ème Année</button>
-        </div>
-      </div>
-
-      <div class="specialty">
-        <button class="card" onclick="toggleYears('reseaux')">Réseaux Informatiques</button>
-        <div id="reseaux" class="years">
-          <button class="year-btn" onclick="goTo('groupes.html?s=reseaux&y=1')">1ère Année</button>
-          <button class="year-btn" onclick="goTo('groupes.html?s=reseaux&y=2')">2ème Année</button>
-        </div>
-      </div>
-    </div>
+    <!-- Specialties will be generated here dynamically -->
+    <div class="specialties-list" id="specialtiesContainer"></div>
 
     <div class="nav-buttons">
       <button onclick="goBack()">⬅️ Précédent</button>
-      <button onclick="goTo('groupes.html?s=devdigital&y=1')">Suivant ➡️</button>
     </div>
   </main>
 
