@@ -19,19 +19,13 @@
     <h2 class="section-title" id="specialtyName">Spécialité</h2>
     <h3 class="section-title" id="yearName">Année</h3>
 
-    <!-- Groupes will be listed here -->
-    <div class="groupes-list">
-      <button class="card" onclick="goTo('emploi.html?g=101')">Groupe 101</button>
-      <button class="card" onclick="goTo('emploi.html?g=102')">Groupe 102</button>
-      <button class="card" onclick="goTo('emploi.html?g=103')">Groupe 103</button>
-      <button class="card" onclick="goTo('emploi.html?g=201')">Groupe 201</button>
-      <button class="card" onclick="goTo('emploi.html?g=202')">Groupe 202</button>
-      <button class="card" onclick="goTo('emploi.html?g=203')">Groupe 203</button>
-      <button class="card" onclick="goTo('emploi.html?g=devofs201')">DEVOFS 201</button>
+    <div class="groupes-list" id="groupsContainer">
+      <!-- Groups will be dynamically loaded here -->
     </div>
 
     <div class="nav-buttons">
-      <button onclick="goBack()">⬅️ Précédent</button>
+      <button id="prevBtn" onclick="goBack()">⬅️ Précédent</button>
+      <button id="nextBtn" style="display:none" onclick="goNext()">Suivant ➡️</button>
     </div>
   </main>
 
