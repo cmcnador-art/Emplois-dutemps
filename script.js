@@ -118,7 +118,7 @@ function goNext() {
     const spec = getSelection('specialty');
     const year = getSelection('year');
     if (spec && year) goTo(`groupes.html?s=${spec}&y=${year}`);
-  } else if (currentPage.includes('groupes.html')) {
+  } else if (currentPage.includes('Groupes.html')) {
     const group = getSelection('group');
     if (group) goTo(`emploi.html?g=${group}`);
   }
