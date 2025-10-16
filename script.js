@@ -15,7 +15,99 @@ function selectPole(poleId) { saveSelection('pole', poleId); }
 function selectSpecialty(specId) { saveSelection('specialty', specId); }
 function selectYear(year) { saveSelection('year', year); }
 function selectGroup(groupId) { saveSelection('group', groupId); }
+// -------------- specialties list --------
+function loadSpecialtiesPage() {
+  const params = new URLSearchParams(window.location.search);
+  const pole = params.get('p');
 
+  const poleNameEl = document.getElementById('poleName');
+  const container = document.getElementById('specialtiesContainer');
+
+  const specialtiesData = {
+    digital: {
+      title: 'Pôle Digital',
+      specialties: [
+        { id: 'dev', name: 'Développement Digital' },
+        { id: 'infographie', name: 'Infographie' },
+        { id: 'reseaux', name: 'Réseaux Informatiques' }
+      ]
+    },
+    gestion: {
+      title: 'Pôle Gestion & Commerce',
+      specialties: [
+        { id: 'compta', name: 'Comptabilité' },
+        { id: 'commerce', name: 'Commerce' },
+        { id: 'gestion', name: 'Gestion des Entreprises' }
+      ]
+    },
+    industrie: {
+      title: 'Pôle Industrie',
+      specialties: [
+        { id: 'elec', name: 'Électricité Industrielle' },
+        { id: 'meca', name: 'Mécanique Industrielle' }
+      ]
+    },
+    agri: {
+      title: 'Pôle Agri-Agroalimentaire',
+      specialties: [
+        { id: 'agriculture', name: 'Agriculture' },
+        { id: 'agro', name: 'Agroalimentaire' }
+      ]
+    },
+    btp: {
+      title: 'Pôle Bâtiment & T.P.',
+      specialties: [
+        { id: 'bat', name: 'Bâtiment' },
+        { id: 'tp', name: 'Travaux Publics' }
+      ]
+    },
+    tourisme: {
+      title: 'Pôle Tourisme & Hôtellerie',
+      specialties: [
+        { id: 'hotel', name: 'Hôtellerie' },
+        { id: 'tourisme', name: 'Tourisme' }
+      ]
+    },
+    textile: {
+      title: 'Pôle Textile & Mode',
+      specialties: [
+        { id: 'mode', name: 'Stylisme & Modélisme' },
+        { id: 'textile', name: 'Production Textile' }
+      ]
+    },
+    sante: {
+      title: 'Pôle Santé & Services Sociaux',
+      specialties: [
+        { id: 'infirmier', name: 'Infirmier Polyvalent' },
+        { id: 'social', name: 'Service Social' }
+      ]
+    }
+  };
+
+  const poleData = specialtiesData[pole];
+
+  if (!poleData) {
+    poleNameEl.textContent = 'Pôle inconnu';
+    container.innerHTML = '<p>Aucune spécialité trouvée.</p>';
+    return;
+  }
+
+  poleNameEl.textContent = poleData.title;
+  container.innerHTML = '';
+
+  poleData.specialties.forEach(spec => {
+    const div = document.createElement('div');
+    div.className = 'specialty';
+    div.innerHTML = `
+      <button class="card" onclick="toggleYears('${spec.id}'); selectSpecialty('${spec.id}')">${spec.name}</button>
+      <div id="${spec.id}" class="years">
+        <button class="year-btn" onclick="selectYear(1); goNext()">1ère Année</button>
+        <button class="year-btn" onclick="selectYear(2); goNext()">2ème Année</button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
 // ------------------ SMART NAV BUTTONS ------------------
 function goNext() {
   const currentPage = window.location.pathname.split('/').pop();
