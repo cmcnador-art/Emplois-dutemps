@@ -130,8 +130,8 @@ function loadSpecialtiesPage() {
     div.innerHTML = `
       <button class="card" onclick="toggleYears('${spec.id}')">${spec.name}</button>
       <div id="${spec.id}" class="years">
-        <button class="year-btn" onclick="goTo('groupes.html?s=${spec.id}&y=1')">1ère Année</button>
-        <button class="year-btn" onclick="goTo('groupes.html?s=${spec.id}&y=2')">2ème Année</button>
+        <button class="year-btn" onclick="goTo('Groupes.html?s=${spec.id}&y=1')">1ère Année</button>
+        <button class="year-btn" onclick="goTo('Groupes.html?s=${spec.id}&y=2')">2ème Année</button>
       </div>
     `;
     container.appendChild(div);
