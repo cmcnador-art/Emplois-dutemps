@@ -16,24 +16,22 @@
   </header>
 
   <main class="content">
-    <h2 class="section-title">Liste des Pôles</h2>
+    <h2 class="section-title">Nos Pôles</h2>
 
     <div class="poles-list">
-      <!-- Pôles (You can edit or add more easily) -->
-      <button class="card" onclick="goTo('specialites.html?p=digital')">Pôle Digital</button>
-      <button class="card" onclick="goTo('specialites.html?p=gestion')">Pôle Gestion & Commerce</button>
-      <button class="card" onclick="goTo('specialites.html?p=industrie')">Pôle Industrie</button>
-      <button class="card" onclick="goTo('specialites.html?p=agri')">Pôle Agri-Agroalimentaire</button>
-      <button class="card" onclick="goTo('specialites.html?p=btp')">Pôle Bâtiment & T.P.</button>
-      <button class="card" onclick="goTo('specialites.html?p=tourisme')">Pôle Tourisme & Hôtellerie</button>
-      <button class="card" onclick="goTo('specialites.html?p=textile')">Pôle Textile & Mode</button>
-      <button class="card" onclick="goTo('specialites.html?p=sante')">Pôle Santé & Services Sociaux</button>
+      <button class="card" onclick="selectPole('digital'); goTo('specialites.html?p=digital')">Pôle Digital</button>
+      <button class="card" onclick="selectPole('gestion'); goTo('specialites.html?p=gestion')">Pôle Gestion & Commerce</button>
+      <button class="card" onclick="selectPole('industrie'); goTo('specialites.html?p=industrie')">Pôle Industrie</button>
+      <button class="card" onclick="selectPole('agri'); goTo('specialites.html?p=agri')">Pôle Agri-Agroalimentaire</button>
+      <button class="card" onclick="selectPole('btp'); goTo('specialites.html?p=btp')">Pôle Bâtiment & T.P.</button>
+      <button class="card" onclick="selectPole('tourisme'); goTo('specialites.html?p=tourisme')">Pôle Tourisme & Hôtellerie</button>
+      <button class="card" onclick="selectPole('textile'); goTo('specialites.html?p=textile')">Pôle Textile & Mode</button>
+      <button class="card" onclick="selectPole('sante'); goTo('specialites.html?p=sante')">Pôle Santé & Services Sociaux</button>
     </div>
 
     <div class="nav-buttons">
-      <!-- These are just examples; you can hide them here if not needed -->
-      <button disabled>⬅️ Précédent</button>
-      <button onclick="goTo('specialites.html?p=digital')">Suivant ➡️</button>
+      <button id="prevBtn" style="display:none">⬅️ Précédent</button>
+      <button id="nextBtn" style="display:none">Suivant ➡️</button>
     </div>
   </main>
 
