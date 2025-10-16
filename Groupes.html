@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groupes - CMC Oriental Nador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo-wrapper">
+      <img src="cmc-logo.png" alt="Logo CMC Oriental" class="logo-cmc" />
+    </div>
+    <h1 class="title">Emplois du Temps – CMC Oriental Nador</h1>
+    <p class="subtitle" id="pageSubtitle">Choisissez votre groupe</p>
+  </header>
+
+  <main class="content">
+    <h2 class="section-title" id="specialtyName">Spécialité</h2>
+    <h3 class="section-title" id="yearName">Année</h3>
+
+    <!-- Groupes will be listed here -->
+    <div class="groupes-list">
+      <button class="card" onclick="goTo('emploi.html?g=101')">Groupe 101</button>
+      <button class="card" onclick="goTo('emploi.html?g=102')">Groupe 102</button>
+      <button class="card" onclick="goTo('emploi.html?g=103')">Groupe 103</button>
+      <button class="card" onclick="goTo('emploi.html?g=201')">Groupe 201</button>
+      <button class="card" onclick="goTo('emploi.html?g=202')">Groupe 202</button>
+      <button class="card" onclick="goTo('emploi.html?g=203')">Groupe 203</button>
+      <button class="card" onclick="goTo('emploi.html?g=devofs201')">DEVOFS 201</button>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="goBack()">⬅️ Précédent</button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © 2025 CMC Oriental Nador — Plateforme des Emplois du Temps
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
