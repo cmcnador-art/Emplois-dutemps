@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (window.location.pathname.includes('specialites.html')) {
     loadSpecialtiesPage();
-  } else if (window.location.pathname.includes('groupes.html')) {
+  } else if (window.location.pathname.includes('Groupes.html')) {
     loadGroupsPage();
   }
 });
