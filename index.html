@@ -7,28 +7,33 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
-    <header class="header">
-  <div class="logo-wrapper">
-    <img src="cmc-logo.png" alt="Logo CMC Oriental" class="logo-cmc" />
-  </div>
-  <h1 class="title">Emplois du Temps – CMC Oriental Nador</h1>
-  <p class="subtitle">Consultez les emplois du temps par pôle</p>
-    </header>
-  
+  <header class="header">
+    <div class="logo-wrapper">
+      <img src="cmc-logo.png" alt="Logo CMC Oriental" class="logo-cmc" />
+    </div>
+    <h1 class="title">Emplois du Temps – CMC Oriental Nador</h1>
+    <p class="subtitle">Consultez les emplois du temps par pôle</p>
+  </header>
+
   <main class="content">
     <h2 class="section-title">Nos Pôles</h2>
 
     <div class="poles-list">
-      <!-- Each card links to a pole page (you will create those later) -->
-    <button class="card" onclick="window.location.href='spécialités-digitales.html'">Pôle Digital</button>
-      <a class="card" href="poles/pole-gestion.html">Pôle Gestion & Commerce</a>
-      <a class="card" href="poles/pole-industrie.html">Pôle Industrie</a>
-      <a class="card" href="poles/pole-agri.html">Pôle Agri-Agroalimentaire</a>
-      <a class="card" href="poles/pole-btp.html">Pôle Bâtiment & T.P.</a>
-      <a class="card" href="poles/pole-tourisme.html">Pôle Tourisme & Hôtellerie</a>
-      <a class="card" href="poles/pole-textile.html">Pôle Textile & Mode</a>
-      <a class="card" href="poles/pole-sante.html">Pôle Santé & Services Sociaux</a>
+      <!-- Pôles (You can edit or add more easily) -->
+      <button class="card" onclick="goTo('specialites.html?p=digital')">Pôle Digital</button>
+      <button class="card" onclick="goTo('specialites.html?p=gestion')">Pôle Gestion & Commerce</button>
+      <button class="card" onclick="goTo('specialites.html?p=industrie')">Pôle Industrie</button>
+      <button class="card" onclick="goTo('specialites.html?p=agri')">Pôle Agri-Agroalimentaire</button>
+      <button class="card" onclick="goTo('specialites.html?p=btp')">Pôle Bâtiment & T.P.</button>
+      <button class="card" onclick="goTo('specialites.html?p=tourisme')">Pôle Tourisme & Hôtellerie</button>
+      <button class="card" onclick="goTo('specialites.html?p=textile')">Pôle Textile & Mode</button>
+      <button class="card" onclick="goTo('specialites.html?p=sante')">Pôle Santé & Services Sociaux</button>
+    </div>
+
+    <div class="nav-buttons">
+      <!-- These are just examples; you can hide them here if not needed -->
+      <button disabled>⬅️ Précédent</button>
+      <button onclick="goTo('specialites.html?p=digital')">Suivant ➡️</button>
     </div>
   </main>
 
