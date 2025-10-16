@@ -117,7 +117,7 @@ function goNext() {
   } else if (currentPage.includes('specialites.html')) {
     const spec = getSelection('specialty');
     const year = getSelection('year');
-    if (spec && year) goTo(`groupes.html?s=${spec}&y=${year}`);
+    if (spec && year) goTo(`Groupes.html?s=${spec}&y=${year}`);
   } else if (currentPage.includes('Groupes.html')) {
     const group = getSelection('group');
     if (group) goTo(`emploi.html?g=${group}`);
@@ -136,7 +136,7 @@ function adjustNavButtons() {
   if (currentPage.includes('index.html')) {
     prev.style.display = 'none';
     visibleButtons = 1;
-  } else if (currentPage.includes('groupes.html')) {
+  } else if (currentPage.includes('Groupes.html')) {
     const group = getSelection('group');
     if (!group) next.style.display = 'none';
     visibleButtons = group ? 2 : 1;
