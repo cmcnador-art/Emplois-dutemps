@@ -1,4 +1,4 @@
-// Smooth navigation
+// ------------------ SMOOTH NAVIGATION ------------------
 function goTo(url) {
   window.location.href = url;
 }
@@ -15,7 +15,8 @@ function selectPole(poleId) { saveSelection('pole', poleId); }
 function selectSpecialty(specId) { saveSelection('specialty', specId); }
 function selectYear(year) { saveSelection('year', year); }
 function selectGroup(groupId) { saveSelection('group', groupId); }
-// -------------- specialties list --------
+
+// ------------------ SPECIALTIES LIST ------------------
 function loadSpecialtiesPage() {
   const params = new URLSearchParams(window.location.search);
   const pole = params.get('p');
@@ -108,16 +109,20 @@ function loadSpecialtiesPage() {
     container.appendChild(div);
   });
 }
+
 // ------------------ SMART NAV BUTTONS ------------------
 function goNext() {
   const currentPage = window.location.pathname.split('/').pop();
+
   if (currentPage.includes('index.html')) {
     const pole = getSelection('pole');
     if (pole) goTo(`specialites.html?p=${pole}`);
+
   } else if (currentPage.includes('specialites.html')) {
     const spec = getSelection('specialty');
     const year = getSelection('year');
     if (spec && year) goTo(`Groupes.html?s=${spec}&y=${year}`);
+
   } else if (currentPage.includes('Groupes.html')) {
     const group = getSelection('group');
     if (group) goTo(`emploi.html?g=${group}`);
@@ -146,7 +151,7 @@ function adjustNavButtons() {
   else container.classList.remove('one-button');
 }
 
-// ------------------ SPECIALTIES DYNAMIC LOADING ------------------
+// ------------------ DYNAMIC PAGE LOADING ------------------
 document.addEventListener('DOMContentLoaded', () => {
   adjustNavButtons();
 
@@ -157,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ------------------ SPECIALTIES + YEARS ------------------
+// ------------------ TOGGLE YEARS ------------------
 function toggleYears(id) {
   const allYears = document.querySelectorAll('.years');
   allYears.forEach(section => {
@@ -196,4 +201,4 @@ function loadGroupsPage() {
     btn.onclick = () => { selectGroup(g); goNext(); };
     container.appendChild(btn);
   });
-}
+                                   }
