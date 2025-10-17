@@ -12,16 +12,17 @@
       <img src="cmc-logo.png" alt="Logo CMC Oriental" class="logo-cmc" />
     </div>
     <h1 class="title">Emplois du Temps – CMC Oriental Nador</h1>
-    <p class="subtitle" id="pageSubtitle">Choisissez votre spécialité</p>
+    <p class="subtitle">Choisissez votre spécialité</p>
   </header>
 
   <main class="content">
     <h2 class="section-title" id="poleName">Pôle</h2>
-    <div class="specialties-list" id="specialtiesContainer"></div>
+    <div class="specialties-list" id="specialtiesContainer">
+      <p>Chargement des spécialités...</p>
+    </div>
 
     <div class="nav-buttons">
       <button id="prevBtn" onclick="goBack()">⬅️ Précédent</button>
-      <button id="nextBtn" style="display:none" onclick="goNext()">Suivant ➡️</button>
     </div>
   </main>
 
@@ -30,5 +31,32 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const params = new URLSearchParams(window.location.search);
+      const pole = params.get("p");
+      document.getElementById("poleName").textContent = pole;
+
+      const res = await fetch("https://opensheet.elk.sh/1AfYExJcJEJVw6hOmPUUkBXBnbC16MM9vu453MpVLIpw/Emplois_du_temps");
+      const data = await res.json();
+      const specialties = [...new Set(data.filter(d => d["pôle"] === pole).map(d => d["spécialité"]))];
+
+      const container = document.getElementById("specialtiesContainer");
+      container.innerHTML = "";
+
+      specialties.forEach(spec => {
+        const div = document.createElement("div");
+        div.className = "specialty";
+        div.innerHTML = `
+          <button class="card" onclick="toggleYears('${spec}'); selectSpecialty('${spec}')">${spec}</button>
+          <div id="${spec}" class="years">
+            <button class="year-btn" onclick="selectYear(1); goNext()">1ère Année</button>
+            <button class="year-btn" onclick="selectYear(2); goNext()">2ème Année</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    });
+  </script>
 </body>
 </html>
