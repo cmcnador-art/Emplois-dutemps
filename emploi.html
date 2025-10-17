@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emploi - CMC Oriental Nador</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emploi du Temps - CMC Oriental Nador</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="header">
-  <div class="logo-wrapper">
-    <img src="cmc-logo.png" alt="Logo CMC Oriental" class="logo-cmc">
-  </div>
-  <h1 class="title">Emploi du Temps</h1>
-</header>
-<main class="content">
-  <p>Page Emploi du Temps pour le groupe (prototype)</p>
-</main>
-<footer class="footer">
-  © 2025 CMC Oriental Nador — Plateforme des Emplois du Temps
-</footer>
-<script src="script.js"></script>
+  <header class="header">
+    <div class="logo-wrapper">
+      <img src="cmc-logo.png" alt="Logo CMC Oriental" class="logo-cmc" />
+    </div>
+    <h1 class="title">Emploi du Temps</h1>
+    <p class="subtitle" id="pageSubtitle">Consultez le planning de votre groupe</p>
+  </header>
+
+  <main class="content">
+    <h2 class="section-title" id="emploiTitle">Chargement...</h2>
+
+    <div id="emploiContainer" style="margin-top: 20px;">
+      <p>Veuillez patienter...</p>
+    </div>
+
+    <div class="nav-buttons">
+      <button id="prevBtn" onclick="goBack()">⬅️ Précédent</button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © 2025 CMC Oriental Nador — Plateforme des Emplois du Temps
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
