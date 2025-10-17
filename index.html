@@ -18,20 +18,13 @@
   <main class="content">
     <h2 class="section-title">Nos Pôles</h2>
 
-    <div class="poles-list">
-      <button class="card" onclick="selectPole('digital'); goTo('specialites.html?p=digital')">Pôle Digital</button>
-      <button class="card" onclick="selectPole('gestion'); goTo('specialites.html?p=gestion')">Pôle Gestion & Commerce</button>
-      <button class="card" onclick="selectPole('industrie'); goTo('specialites.html?p=industrie')">Pôle Industrie</button>
-      <button class="card" onclick="selectPole('agri'); goTo('specialites.html?p=agri')">Pôle Agri-Agroalimentaire</button>
-      <button class="card" onclick="selectPole('btp'); goTo('specialites.html?p=btp')">Pôle Bâtiment & T.P.</button>
-      <button class="card" onclick="selectPole('tourisme'); goTo('specialites.html?p=tourisme')">Pôle Tourisme & Hôtellerie</button>
-      <button class="card" onclick="selectPole('textile'); goTo('specialites.html?p=textile')">Pôle Textile & Mode</button>
-      <button class="card" onclick="selectPole('sante'); goTo('specialites.html?p=sante')">Pôle Santé & Services Sociaux</button>
+    <div class="poles-list" id="polesContainer">
+      <p>Chargement des pôles...</p>
     </div>
 
     <div class="nav-buttons">
-      <button id="prevBtn" style="display:none">⬅️ Précédent</button>
-      <button id="nextBtn" style="display:none">Suivant ➡️</button>
+      <button id="prevBtn" disabled>⬅️ Précédent</button>
+      <button id="nextBtn" onclick="goNext()">Suivant ➡️</button>
     </div>
   </main>
 
@@ -40,5 +33,23 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const res = await fetch("https://opensheet.elk.sh/1AfYExJcJEJVw6hOmPUUkBXBnbC16MM9vu453MpVLIpw/Emplois_du_temps");
+      const data = await res.json();
+
+      const poles = [...new Set(data.map(d => d["pôle"]))];
+      const container = document.getElementById("polesContainer");
+      container.innerHTML = "";
+
+      poles.forEach(p => {
+        const btn = document.createElement("button");
+        btn.className = "card";
+        btn.textContent = p;
+        btn.onclick = () => { selectPole(p); goTo(`specialites.html?p=${encodeURIComponent(p)}`); };
+        container.appendChild(btn);
+      });
+    });
+  </script>
 </body>
 </html>
