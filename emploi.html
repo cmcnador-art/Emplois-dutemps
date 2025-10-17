@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Emploi du Temps - CMC Oriental Nador</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
     <div class="logo-wrapper">
-      <img src="cmc-logo.png" alt="Logo CMC Oriental" class="logo-cmc" />
+      <img src="cmc-logo.png" alt="Logo CMC Oriental" class="logo-cmc">
     </div>
-    <h1 class="title">Emploi du Temps – CMC Oriental Nador</h1>
+    <h1 id="emploiTitle" class="title">Chargement...</h1>
   </header>
 
   <main class="content">
-    <h2 class="section-title" id="groupTitle">Groupe</h2>
-    <iframe id="pdfViewer" style="width:90%;height:600px;border:none;"></iframe>
+    <div id="emploiContainer" class="emploi-content">
+      <p>Chargement...</p>
+    </div>
+
     <div class="nav-buttons">
-      <button id="prevBtn" onclick="goBack()">⬅️ Précédent</button>
-      <a id="downloadBtn" class="year-btn" href="#" target="_blank">⬇️ Télécharger le PDF</a>
+      <button id="prevBtn" onclick="goBack()">⬅️ Retour</button>
     </div>
   </main>
 
@@ -28,23 +29,5 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      const params = new URLSearchParams(window.location.search);
-      const group = params.get("g");
-      document.getElementById("groupTitle").textContent = `Emploi du Temps du Groupe ${group}`;
-
-      const res = await fetch("https://opensheet.elk.sh/1AfYExJcJEJVw6hOmPUUkBXBnbC16MM9vu453MpVLIpw/Emplois_du_temps");
-      const data = await res.json();
-      const record = data.find(d => d["groupe"] === group);
-
-      if (record) {
-        document.getElementById("pdfViewer").src = record["drive link"];
-        document.getElementById("downloadBtn").href = record["drive link"];
-      } else {
-        document.getElementById("pdfViewer").outerHTML = "<p>Aucun emploi du temps trouvé.</p>";
-      }
-    });
-  </script>
 </body>
 </html>
