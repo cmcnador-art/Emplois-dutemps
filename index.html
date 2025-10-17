@@ -1,55 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Emplois du Temps - CMC Oriental Nador</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="header">
-    <div class="logo-wrapper">
-      <img src="cmc-logo.png" alt="Logo CMC Oriental" class="logo-cmc" />
-    </div>
-    <h1 class="title">Emplois du Temps – CMC Oriental Nador</h1>
-    <p class="subtitle">Consultez les emplois du temps par pôle</p>
-  </header>
+<div class="poles-list" id="polesContainer">
+  <p>Chargement des pôles...</p>
+</div>
 
-  <main class="content">
-    <h2 class="section-title">Nos Pôles</h2>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const res = await fetch("https://opensheet.elk.sh/1AfYExJcJEJVw6hOmPUUkBXBnbC16MM9vu453MpVLIpw/Emplois_du_temps");
+    const data = await res.json();
 
-    <div class="poles-list" id="polesContainer">
-      <p>Chargement des pôles...</p>
-    </div>
+    const poles = [...new Set(data.map(d => d["pôle"]))];
+    const container = document.getElementById("polesContainer");
+    container.innerHTML = "";
 
-    <div class="nav-buttons">
-      <button id="prevBtn" disabled>⬅️ Précédent</button>
-      <button id="nextBtn" onclick="goNext()">Suivant ➡️</button>
-    </div>
-  </main>
-
-  <footer class="footer">
-    © 2025 CMC Oriental Nador — Plateforme des Emplois du Temps
-  </footer>
-
-  <script src="script.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      const res = await fetch("https://opensheet.elk.sh/1AfYExJcJEJVw6hOmPUUkBXBnbC16MM9vu453MpVLIpw/Emplois_du_temps");
-      const data = await res.json();
-
-      const poles = [...new Set(data.map(d => d["pôle"]))];
-      const container = document.getElementById("polesContainer");
-      container.innerHTML = "";
-
-      poles.forEach(p => {
-        const btn = document.createElement("button");
-        btn.className = "card";
-        btn.textContent = p;
-        btn.onclick = () => { selectPole(p); goTo(`specialites.html?p=${encodeURIComponent(p)}`); };
-        container.appendChild(btn);
-      });
+    poles.forEach(p => {
+      const btn = document.createElement("button");
+      btn.className = "card";
+      btn.textContent = p;
+      btn.onclick = () => {
+        saveSelection('pole', p); // Save selected pole
+        window.location.href = `specialites.html?p=${encodeURIComponent(p)}`;
+      };
+      container.appendChild(btn);
     });
-  </script>
-</body>
-</html>
+  });
+</script>
