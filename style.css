@@ -1,161 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-:root {
-  --main-color: #00A3A1;
-  --accent-color: #5b2d90;
-  --bg-light: #f4f4f4;
-  --white: #ffffff;
-  --text-dark: #222;
-}
-
-* {
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f6fa;
+  color: #222;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background-color: var(--bg-light);
-  color: var(--text-dark);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* HEADER */
-.header {
-  background: linear-gradient(135deg, var(--accent-color), var(--main-color));
-  color: white;
   text-align: center;
-  padding: 20px 15px;
 }
 
-.logo-wrapper {
+h1 {
+  margin-top: 30px;
+  color: #333;
+}
+
+.container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 10px;
+  padding: 20px;
+  gap: 15px;
 }
 
-.logo-cmc {
-  max-width: 150px;
-  height: auto;
+.btn {
+  background-color: #2f3640;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.title {
-  font-size: 1.3rem;
-  font-weight: 600;
+.btn:hover {
+  background-color: #40739e;
 }
 
-.subtitle {
-  font-size: 0.95rem;
-  opacity: 0.9;
-}
-
-/* MAIN CONTENT */
-.content {
-  flex: 1;
-  padding: 16px 12px;
-  text-align: center;
-}
-
-.section-title {
-  color: var(--accent-color);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 20px 0;
-}
-
-/* CARDS (used for poles + specialties) */
 .card {
-  background-color: #0055aa;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 500;
-  padding: 15px 20px;
-  width: 90%;
-  max-width: 350px;
-  margin: 8px auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: block;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 260px;
 }
 
-.card:hover {
-  background-color: #003366;
-  transform: translateY(-3px);
-}
-
-/* Dropdown years (hidden by default) */
-.years {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  animation: fadeIn 0.4s ease;
-  margin-top: 10px;
-  margin-bottom: 15px;
-}
-
-.year-btn {
-  background-color: var(--main-color);
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-  width: 80%;
-  max-width: 300px;
-  transition: 0.3s;
-}
-
-.year-btn:hover {
-  background-color: var(--accent-color);
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* NAV BUTTONS */
-.nav-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 25px 0;
-}
-
-.nav-buttons.one-button {
-  justify-content: center;
-}
-
-.nav-buttons button, .nav-buttons a.year-btn {
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s;
+.card a {
+  color: #0984e3;
   text-decoration: none;
-  display: inline-block;
+  font-weight: bold;
 }
 
-.nav-buttons button:hover, .nav-buttons a.year-btn:hover {
-  background-color: var(--main-color);
+.card a:hover {
+  text-decoration: underline;
 }
 
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 12px 8px;
-  background-color: var(--accent-color);
-  color: white;
-  font-size: 0.9rem;
+.small {
+  color: #666;
+  font-size: 13px;
 }
