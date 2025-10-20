@@ -130,7 +130,11 @@ body {
   margin: 25px 0;
 }
 
-.nav-buttons button {
+.nav-buttons.one-button {
+  justify-content: center;
+}
+
+.nav-buttons button, .nav-buttons a.year-btn {
   background-color: var(--accent-color);
   color: white;
   border: none;
@@ -139,9 +143,11 @@ body {
   font-size: 15px;
   cursor: pointer;
   transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.nav-buttons button:hover {
+.nav-buttons button:hover, .nav-buttons a.year-btn:hover {
   background-color: var(--main-color);
 }
 
