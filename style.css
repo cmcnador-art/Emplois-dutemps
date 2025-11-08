@@ -1,115 +1,178 @@
-:root{
+/* === Thème principal === */
+:root {
   --blue-1: #004aad;
   --blue-2: #6a00ff;
   --purple: #6a00ff;
-  --text: #222;
+  --text: #1a1a1a;
   --muted: #6b7280;
   --card-bg: #ffffff;
-  --radius: 18px;
+  --radius: 20px;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color:var(--text);
-  background:#fff;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.4;
-  scroll-behavior:smooth;
+/* === Reset & base === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Scroll progress bar */
-#scroll-indicator{
-  position:fixed;
-  left:0;
-  top:0;
-  height:4px;
-  width:0%;
-  background: linear-gradient(90deg,var(--blue-1),var(--blue-2));
-  z-index:9999;
-  transition: width 200ms linear;
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+  color: var(--text);
+  background: #f8f9ff;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-/* Header */
-.header{
-  background: linear-gradient(90deg,var(--blue-1),var(--blue-2));
+/* === Scroll bar moderne === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--blue-1), var(--blue-2));
+  border-radius: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+/* === Barre de progression du scroll === */
+#scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue-1), var(--blue-2));
+  width: 0%;
+  z-index: 1000;
+  transition: width 0.2s linear;
+}
+
+/* === Header === */
+.header {
+  background: linear-gradient(90deg, var(--blue-1), var(--blue-2));
   color: #fff;
-  padding:18px 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-.header-inner{
-  max-width:980px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.logo{width:64px;height:auto;border-radius:12px;background:rgba(255,255,255,0.06);padding:6px}
-.header-text h1{margin:0;font-size:1.1rem;letter-spacing:0.4px}
-.subtitle{margin:0;font-size:0.85rem;color:rgba(255,255,255,0.9)}
-
-/* Container */
-.container{max-width:980px;margin:28px auto;padding:0 16px}
-
-/* Section title */
-.section-title{
-  color:var(--purple);
-  font-size:1.25rem;
-  margin:0 0 6px 0;
+  text-align: center;
+  padding: 20px 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-/* Lead */
-.lead{color:var(--muted);margin:0 0 18px 0}
-
-/* Cards grid */
-.cards-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap:16px;
+.header .logo {
+  width: 80px;
+  border-radius: 12px;
+  margin-bottom: 8px;
 }
 
-/* Card style */
-.card{
-  background:var(--card-bg);
-  border-radius:var(--radius);
-  padding:16px;
-  box-shadow:0 8px 24px rgba(8,15,30,0.06);
-  transition: transform 300ms ease, box-shadow 300ms ease, opacity 400ms ease;
-  cursor:pointer;
-  min-height:92px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  font-weight:600;
-  font-size:1rem;
-  color:var(--blue-1);
-  border: 1px solid rgba(10, 12, 20, 0.03);
-  opacity:0;
-  transform: translateY(10px);
-  padding-left:12px;padding-right:12px;
-}
-.card:focus{outline:3px solid rgba(106,0,255,0.12)}
-.card:hover{
-  transform: translateY(-6px);
-  box-shadow:0 14px 36px rgba(8,15,30,0.12);
+.header h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
 }
 
-/* When element becomes visible (animated in) */
-.card.visible{ opacity:1; transform: translateY(0); transition: transform 450ms cubic-bezier(.2,.9,.2,1), opacity 350ms ease; }
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
 
-/* Footer */
-.footer{max-width:980px;margin:28px auto 60px auto;text-align:center;color:var(--muted);font-size:0.9rem;padding:0 16px}
+/* === Section principale === */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 140px);
+  text-align: center;
+  padding: 20px;
+}
 
-/* Responsive tweaks */
-@media (max-width:420px){
-  .header-inner{gap:8px}
-  .logo{width:52px}
-  .card{min-height:76px;font-size:0.95rem}
+/* === Titre centré === */
+.section-title {
+  font-size: 2rem;
+  color: var(--purple);
+  margin-bottom: 8px;
+}
+
+.lead {
+  color: var(--muted);
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
+
+/* === Grille des cartes === */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* === Style des cartes (boîtes des pôles) === */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  color: var(--blue-1);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s ease;
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+}
+
+/* === Animation d'apparition au scroll === */
+.card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* === Effet au survol === */
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* === Effet au clic === */
+.card:active {
+  transform: scale(0.96);
+  background: linear-gradient(135deg, var(--blue-1), var(--blue-2));
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(106, 0, 255, 0.2);
+}
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  padding: 40px 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* === Animation du titre quand on scroll === */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.section-title, .lead {
+  animation: fadeUp 1s ease forwards;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .card {
+    padding: 25px;
+  }
 }
