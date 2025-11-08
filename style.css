@@ -1,178 +1,134 @@
-/* === Thème principal === */
-:root {
-  --blue-1: #004aad;
-  --blue-2: #6a00ff;
-  --purple: #6a00ff;
-  --text: #1a1a1a;
-  --muted: #6b7280;
-  --card-bg: #ffffff;
-  --radius: 20px;
-}
+/* -------------------------------------
+   UNIVERSAL CMC NADOR APP STYLE
+   For: Pôles, Spécialités, Groupes pages
+   ------------------------------------- */
 
-/* === Reset & base === */
+/* Reset & base */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  font-family: 'Poppins', system-ui, sans-serif;
-  color: var(--text);
-  background: #f8f9ff;
+  background: #ffffff;
+  color: #222;
   overflow-x: hidden;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #0048ff, #6b4cff);
+  color: white;
+  text-align: center;
+  padding: 30px 10px;
+  font-size: 1.8em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Section title */
+.section-title {
+  text-align: center;
+  font-size: 1.6em;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #5a3fff;
+  font-weight: 600;
+}
+
+/* Container */
+#poles-container,
+#specialties-container,
+#groups-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px;
+}
+
+/* Card boxes */
+.card {
+  width: 250px;
+  height: 130px;
+  background: #4f6eff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  font-weight: 500;
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(79, 110, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+/* Visible animation (triggered by JS) */
+.card.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Hover and click effects */
+.card:hover {
+  transform: scale(1.05);
+  background: #3d57e5;
+  box-shadow: 0 10px 20px rgba(61, 87, 229, 0.4);
+}
+
+.card:active {
+  transform: scale(0.97);
+  background: #324bd3;
+}
+
+/* Smooth scroll effect */
+html {
   scroll-behavior: smooth;
 }
 
-/* === Scroll bar moderne === */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--blue-1), var(--blue-2));
-  border-radius: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #eee;
-}
-
-/* === Barre de progression du scroll === */
+/* Scroll indicator bar */
 #scroll-indicator {
   position: fixed;
   top: 0;
   left: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--blue-1), var(--blue-2));
+  background: linear-gradient(90deg, #0048ff, #6b4cff);
   width: 0%;
-  z-index: 1000;
-  transition: width 0.2s linear;
+  z-index: 200;
+  transition: width 0.2s ease;
 }
 
-/* === Header === */
-.header {
-  background: linear-gradient(90deg, var(--blue-1), var(--blue-2));
-  color: #fff;
-  text-align: center;
-  padding: 20px 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+/* Fade-in effect when scrolling */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.header .logo {
-  width: 80px;
-  border-radius: 12px;
-  margin-bottom: 8px;
-}
-
-.header h1 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin: 0;
-}
-
-.subtitle {
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-/* === Section principale === */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 140px);
-  text-align: center;
-  padding: 20px;
-}
-
-/* === Titre centré === */
-.section-title {
-  font-size: 2rem;
-  color: var(--purple);
-  margin-bottom: 8px;
-}
-
-.lead {
-  color: var(--muted);
-  margin-bottom: 40px;
-  font-size: 1rem;
-}
-
-/* === Grille des cartes === */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  width: 100%;
-  max-width: 800px;
-}
-
-/* === Style des cartes (boîtes des pôles) === */
-.card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  color: var(--blue-1);
-  font-weight: 600;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  padding: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.35s ease;
-  opacity: 0;
-  transform: translateY(20px) scale(0.98);
-}
-
-/* === Animation d'apparition au scroll === */
-.card.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* === Effet au survol === */
-.card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* === Effet au clic === */
-.card:active {
-  transform: scale(0.96);
-  background: linear-gradient(135deg, var(--blue-1), var(--blue-2));
-  color: #fff;
-  box-shadow: 0 0 0 3px rgba(106, 0, 255, 0.2);
-}
-
-/* === Footer === */
-.footer {
-  text-align: center;
-  padding: 40px 10px;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-/* === Animation du titre quand on scroll === */
-@keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.section-title, .lead {
-  animation: fadeUp 1s ease forwards;
-}
-
-/* === Responsive === */
+/* Responsive for phones */
 @media (max-width: 600px) {
-  .section-title {
-    font-size: 1.6rem;
+  header {
+    font-size: 1.4em;
+    padding: 20px 10px;
   }
   .card {
-    padding: 25px;
+    width: 85%;
+    height: 110px;
+    font-size: 1.1em;
   }
 }
