@@ -95,18 +95,29 @@ html,body {
   padding: 0 16px 48px;
 }
 
-/* SECTION TITLE */
-.section {
-  margin-top: 8px;
+/* SECTION TITLE – improved */
+.section-title {
+  text-align: center;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--purple-700);
+  margin: 26px auto 26px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
 }
 
-/* 🔥 CENTERED NOW */
-.section-title{
-  text-align: center;
-  font-size: 1.3rem;
-  color: var(--purple-600);
-  margin: 22px auto 14px;
-  font-weight: 700;
+/* gradient underline */
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 62%;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
 }
 
 /* LIST container */
