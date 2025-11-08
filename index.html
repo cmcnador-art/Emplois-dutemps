@@ -1,177 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emplois du Temps - CMC Nador</title>
-    <style>
-        /* --- Style Général --- */
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f5f7; /* Couleur de fond gris clair */
-            color: #333;
-        }
-
-        /* --- En-tête (Header) --- */
-        .header {
-            background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC); /* Dégradé de bleu */
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-        }
-        .header img {
-            width: 100px; /* Taille du logo */
-            margin-bottom: 15px;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2em;
-            font-weight: bold;
-        }
-        .header p {
-            margin: 10px 0 0;
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
-        /* --- Contenu Principal --- */
-        .main-container {
-            padding: 20px;
-            text-align: center;
-        }
-        .main-container h2 {
-            font-size: 1.8em;
-            color: #4a148c; /* Couleur violet foncé pour le titre "Nos Pôles" */
-            margin-bottom: 30px;
-        }
-
-        /* --- Liste des Pôles --- */
-        #poles-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px; /* Espace entre les boutons */
-        }
-        .pole-button {
-            display: block;
-            width: 80%;
-            max-width: 400px;
-            padding: 20px;
-            text-decoration: none;
-            color: #4a148c; /* Texte violet foncé */
-            background-color: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 15px; /* Bords arrondis */
-            font-size: 1.2em;
-            font-weight: 500;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Ombre douce */
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .pole-button:hover {
-            transform: translateY(-5px); /* Effet de surélévation au survol */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        /* Style pour le premier bouton (bleu) - Optionnel */
-        .pole-button.active {
-             background-color: #0052D4; /* Bleu foncé */
-             color: white;
-             border-color: #0052D4;
-        }
-
-        /* --- Animation de chargement (Spinner) --- */
-        .loader {
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #0052D4;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 40px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-    <!-- Librairie pour lire facilement le fichier CSV -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CMC Nador — Nos Pôles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="scroll-indicator" aria-hidden="true"></div>
 
-    <header class="header">
-        <!-- Remplacez 'cmc-logo.png' par le chemin correct vers votre logo -->
-        <img src="cmc-logo.png" alt="Logo CMC Nador">
-        <h1>Emplois du Temps – CMC Oriental Nador</h1>
-        <p>Consultez les emplois du temps par pôle</p>
-    </header>
+  <header class="header">
+    <div class="header-inner">
+      <img src="cmc-logo.png" alt="Logo CMC Nador" class="logo" />
+      <div class="header-text">
+        <h1>CMC Nador</h1>
+        <p class="subtitle">Accédez instantanément à votre emploi du temps</p>
+      </div>
+    </div>
+  </header>
 
-    <main class="main-container">
-        <h2>Nos Pôles</h2>
-        <!-- Le loader sera affiché pendant le chargement des données -->
-        <div id="loader" class="loader"></div>
-        <!-- La liste des pôles sera injectée ici par JavaScript -->
-        <div id="poles-list"></div>
-    </main>
+  <main class="container">
+    <section>
+      <h2 class="section-title">Nos Pôles</h2>
+      <p class="lead">Sélectionnez votre pôle pour voir les spécialités et les groupes.</p>
+      <div id="poles-container" class="cards-grid" aria-live="polite"></div>
+    </section>
+  </main>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // ACTION REQUISE : Collez ici le lien CSV de votre Google Sheet publié
-            const googleSheetURL = 'VOTRE_LIEN_CSV_ICI';
+  <footer class="footer">
+    <small>© CMC Nador — Application de consultation des emplois du temps</small>
+  </footer>
 
-            const polesListContainer = document.getElementById('poles-list');
-            const loader = document.getElementById('loader');
-
-            // Fonction pour récupérer et afficher les pôles
-            function fetchPoles() {
-                Papa.parse(googleSheetURL, {
-                    download: true,
-                    header: true, // Important: considère la première ligne comme en-tête
-                    complete: function(results) {
-                        loader.style.display = 'none'; // Cache le loader
-                        const data = results.data;
-                        
-                        // Utiliser un Set pour obtenir des noms de pôles uniques
-                        const uniquePoles = [...new Set(data.map(row => row.pôle).filter(pole => pole))];
-
-                        if (uniquePoles.length === 0) {
-                            polesListContainer.innerHTML = "<p>Aucun pôle n'a été trouvé.</p>";
-                            return;
-                        }
-                        
-                        // Créer un bouton pour chaque pôle unique
-                        uniquePoles.forEach((pole, index) => {
-                            const button = document.createElement('a');
-                            button.textContent = pole;
-                            button.className = 'pole-button';
-                            
-                            // Style spécial pour le premier bouton, comme sur votre design
-                            if (index === 0) {
-                                button.classList.add('active');
-                            }
-                            
-                            // On prépare le lien pour la page suivante
-                            // Le nom du pôle est passé dans l'URL pour être récupéré par la prochaine page
-                            button.href = `specialites.html?pole=${encodeURIComponent(pole)}`;
-                            
-                            polesListContainer.appendChild(button);
-                        });
-                    },
-                    error: function(error) {
-                        loader.style.display = 'none'; // Cache le loader même en cas d'erreur
-                        polesListContainer.innerHTML = "<p>Erreur lors du chargement des données. Veuillez réessayer plus tard.</p>";
-                        console.error("Erreur de chargement:", error);
-                    }
-                });
-            }
-
-            // Lancer la fonction
-            fetchPoles();
-        });
-    </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
