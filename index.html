@@ -1,37 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CMC Nador — Nos Pôles</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="scroll-indicator" aria-hidden="true"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CMC Nador – Nos Pôles</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="scroll-indicator"></div>
 
-  <header class="header">
-    <div class="header-inner">
-      <img src="cmc-logo.png" alt="Logo CMC Nador" class="logo" />
-      <div class="header-text">
-        <h1>CMC Nador</h1>
-        <p class="subtitle">Accédez instantanément à votre emploi du temps</p>
-      </div>
+    <header>CMC NADOR</header>
+
+    <h2 class="section-title">Nos Pôles</h2>
+
+    <div id="poles-container">
+      <!-- The boxes will appear here dynamically via JavaScript -->
     </div>
-  </header>
 
-  <main class="container">
-    <section>
-      <h2 class="section-title">Nos Pôles</h2>
-      <p class="lead">Sélectionnez votre pôle pour voir les spécialités et les groupes.</p>
-      <div id="poles-container" class="cards-grid" aria-live="polite"></div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <small>© CMC Nador — Application de consultation des emplois du temps</small>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
