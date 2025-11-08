@@ -100,29 +100,13 @@ html,body {
   margin-top: 8px;
 }
 
-/* 🔥 PAGE TITLES (Nos Pôles, Pôle Digital, etc.) */
+/* 🔥 CENTERED NOW */
 .section-title{
   text-align: center;
-  font-size: 1.55rem;
+  font-size: 1.3rem;
+  color: var(--purple-600);
+  margin: 22px auto 14px;
   font-weight: 700;
-  color: var(--purple-700);
-  margin: 28px auto 28px;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 6px;
-}
-
-/* 🔥 Gradient underline */
-.section-title::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-  width: 60%;
-  height: 3px;
-  border-radius: 3px;
-  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
 }
 
 /* LIST container */
@@ -193,6 +177,6 @@ html,body {
 @media (max-width: 600px) {
   .hero-title { font-size: 1.25rem; }
   .hero-desc { font-size: 0.95rem; }
-  .section-title { font-size: 1.3rem; }
+  .section-title { font-size: 1.1rem; }
   .card { padding: 18px; font-size: 1.02rem; border-radius: 14px; }
 }
