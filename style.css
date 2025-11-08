@@ -100,15 +100,16 @@ html,body {
   margin-top: 8px;
 }
 
+/* 🔥 CENTERED NOW */
 .section-title{
-  text-align: left;
+  text-align: center;
   font-size: 1.3rem;
   color: var(--purple-600);
-  margin: 18px 6px;
+  margin: 22px auto 14px;
   font-weight: 700;
 }
 
-/* LIST container (shared for poles, specialties, groups) */
+/* LIST container */
 .list-container {
   display: flex;
   flex-direction: column;
@@ -139,19 +140,19 @@ html,body {
   opacity: 0;
 }
 
-/* For accessibility, add focus */
+/* Focus */
 .card:focus {
   outline: 3px solid rgba(90,63,255,0.12);
   outline-offset: 3px;
 }
 
-/* hover */
+/* Hover */
 .card:hover {
   transform: translateY(-4px) scale(1.01);
   box-shadow: 0 22px 36px rgba(24,18,54,0.10);
 }
 
-/* visible class toggled by IntersectionObserver */
+/* visible */
 .card.visible {
   transform: translateY(0);
   opacity: 1;
@@ -164,7 +165,6 @@ html,body {
   font-weight: 500;
 }
 
-/* small helper text in card (if needed) */
 .card small {
   display: block;
   font-weight: 400;
@@ -173,7 +173,7 @@ html,body {
   margin-top: 6px;
 }
 
-/* Responsive tweaks */
+/* Responsive */
 @media (max-width: 600px) {
   .hero-title { font-size: 1.25rem; }
   .hero-desc { font-size: 0.95rem; }
