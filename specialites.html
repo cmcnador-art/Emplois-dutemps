@@ -1,52 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CMC Nador – Spécialités</title>
-
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spécialités</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <div id="scroll-indicator"></div>
 
-  <header class="site-hero">
-    <div class="hero-inner">
-      <img src="cmc-logo.png" class="logo" alt="Logo CMC Nador">
-      <h1 class="hero-title">Emplois du Temps – CMC<br><span class="hero-sub">Oriental Nador</span></h1>
-      <p class="hero-desc">Choisissez la spécialité</p>
+    <header>
+        <h1 class="page-title" id="poleTitle"></h1>
+    </header>
+
+    <main class="container" id="specialtiesContainer">
+        <!-- specialties will load here -->
+    </main>
+
+    <!-- The years dropdown (hidden by default) -->
+    <div class="dropdown hidden" id="yearsDropdown">
+        <button class="year-btn" data-year="1">1ère année</button>
+        <button class="year-btn" data-year="2">2ème année</button>
     </div>
-  </header>
 
-  <main class="main">
-    <section class="section">
-
-      <!-- JS replaces this with: "Pôle Digital", "Pôle Gestion", etc -->
-      <h2 id="page-title" class="section-title">Spécialités</h2>
-
-      <!-- level selector -->
-      <div style="display: flex; justify-content: center; margin-bottom: 12px;">
-        <label style="margin-right: 8px; color: #555; align-self: center; font-weight: 500;">
-          Niveau :
-        </label>
-
-        <select id="niveau" style="padding: 8px 10px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); font-weight: 600;">
-          <option value="1ère année">1ère année</option>
-          <option value="2ème année">2ème année</option>
-        </select>
-      </div>
-
-      <div id="specialties-container" class="list-container">
-        <div class="placeholder">Chargement…</div>
-      </div>
-
-    </section>
-  </main>
-
-  <!-- ONE JS FILE FOR ALL PAGES -->
-  <script src="script.js" defer></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
