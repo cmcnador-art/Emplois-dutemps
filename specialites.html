@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spécialités</title>
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CMC Nador – Spécialités</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="scroll-indicator" aria-hidden="true"></div>
 
-    <header>
-        <h1 class="page-title" id="poleTitle"></h1>
-    </header>
-
-    <main class="container" id="specialtiesContainer">
-        <!-- specialties will load here -->
-    </main>
-
-    <!-- The years dropdown (hidden by default) -->
-    <div class="dropdown hidden" id="yearsDropdown">
-        <button class="year-btn" data-year="1">1ère année</button>
-        <button class="year-btn" data-year="2">2ème année</button>
+  <header class="site-hero">
+    <div class="hero-inner">
+      <img src="cmc-logo.png" alt="Logo CMC Nador" class="logo" />
+      <h1 class="hero-title">Emplois du Temps – CMC<br><span class="hero-sub">Oriental Nador</span></h1>
+      <p class="hero-desc">Choisissez la spécialité</p>
     </div>
+  </header>
 
-    <script src="script.js"></script>
+  <main class="main">
+    <section class="section">
+      <!-- The TITLE will be replaced by JS with the chosen pole name -->
+      <h2 id="page-title" class="section-title">Spécialités</h2>
+
+      <!-- niveau wrapper: hidden initially; will show after a specialty is clicked -->
+      <div id="niveau-wrapper" class="niveau-wrapper hidden" aria-hidden="true">
+        <label for="niveau-select">Niveau :</label>
+        <select id="niveau-select" aria-label="Choisir niveau">
+          <option value="1ère année">1ère année</option>
+          <option value="2ème année">2ème année</option>
+        </select>
+      </div>
+
+      <div id="specialties-container" class="list-container" aria-live="polite">
+        <div class="placeholder">Chargement…</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
