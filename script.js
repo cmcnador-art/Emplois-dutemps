@@ -6,7 +6,7 @@
  * - Il extrait la liste unique des Pôles et affiche des cartes.
  *******************************************************/
 
-const sheetURL = "https://docs.google.com/spreadsheets/d/e/TON_LIEN_CSV/pub?output=csv"; // <-- remplace ici par ton lien CSV
+const sheetURL = "https://docs.google.com/spreadsheets/d/1AfYExJcJEJVw6hOmPUUkBXBnbC16MM9vu453MpVLIpw/gviz/tq?tqx=out:csv&gid=0"; // <-- remplace ici par ton lien CSV
 
 const container = document.getElementById("poles-container");
 
