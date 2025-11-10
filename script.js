@@ -32,14 +32,18 @@ function parseCSV(text, delim=','){
     } else if (ch === delim && !inQuotes) {
       row.push(cur);
       cur = '';
-    } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
+    } else if ((ch === '
+' || ch === '
+') && !inQuotes) {
       if (cur !== '' || row.length > 0) {
         row.push(cur);
         rows.push(row);
         row = [];
         cur = '';
       }
-      while (text[i+1] === '\n' || text[i+1] === '\r') i++;
+      while (text[i+1] === '
+' || text[i+1] === '
+') i++;
     } else {
       cur += ch;
     }
@@ -51,7 +55,7 @@ function parseCSV(text, delim=','){
   return rows.map(r => r.map(c => (c||'').trim()));
 }
 function normalize(s){
-  return (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+  return (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
 }
 function indexOfHeader(headers, names){
   const norm = headers.map(h => normalize(h||''));
@@ -93,7 +97,9 @@ async function loadCSV(){
   if (preview.includes('<html') || preview.includes('<!doctype html') || preview.includes('login')) {
     throw new Error('La feuille renvoie une page HTML (vérifie le partage et le lien CSV).');
   }
-  const firstLine = text.split(/\r?\n/).find(l => l && l.trim().length>0) || '';
+  const firstLine = text.split(/
+?
+/).find(l => l && l.trim().length>0) || '';
   const delim = detectDelimiter(firstLine);
   return parseCSV(text, delim);
 }
@@ -220,29 +226,27 @@ async function loadSpecialites(){
       btn.type = 'button';
       btn.textContent = s;
       btn.setAttribute('aria-label', `Sécurité ${s}`);
-      // click toggles the niveau wrapper; if clicking same specialty => toggle closed
+
       btn.addEventListener('click', () => {
-        // store chosen specialty (to be used when the user selects niveau)
         if (window.currentSpecialty === s) {
-          // toggle wrapper
           if (niveauWrapper) {
             const isHidden = niveauWrapper.classList.toggle('hidden');
             niveauWrapper.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
+            if (!isHidden) {
+              btn.after(niveauWrapper);
+            }
           }
-          // if it was same selected, remove currentSpecialty when closed
           if (niveauWrapper && niveauWrapper.classList.contains('hidden')) {
             window.currentSpecialty = null;
           }
           return;
         }
-        // different specialty clicked: set it and show the wrapper
         window.currentSpecialty = s;
         if (niveauWrapper) {
           niveauWrapper.classList.remove('hidden');
           niveauWrapper.setAttribute('aria-hidden', 'false');
+          btn.after(niveauWrapper);
         }
-        // optionally, visually indicate selected card
-        // remove previous selected class
         document.querySelectorAll('.card.selected').forEach(el => el.classList.remove('selected'));
         btn.classList.add('selected');
       });
@@ -251,7 +255,6 @@ async function loadSpecialites(){
       setTimeout(() => revealObserver.observe(btn), 70 * idx);
     });
 
-    // when user selects a niveau -> redirect to groupes.html with params
     if (niveauSelect) {
       niveauSelect.onchange = () => {
         if (!window.currentSpecialty) return;
