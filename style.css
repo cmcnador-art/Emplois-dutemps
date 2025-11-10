@@ -97,6 +97,7 @@ html,body {
 
 /* SECTION TITLE */
 .section {
+  text-align: center;
   margin-top: 8px;
 }
 
