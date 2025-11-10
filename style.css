@@ -1,4 +1,4 @@
-/* -------------------------
+"/* -------------------------
    UNIVERSAL CMC NADOR APP STYLE
    For: Pôles, Spécialités, Groupes pages
    ------------------------- */
@@ -218,36 +218,6 @@ html,body {
   padding: 8px 10px;
   border-radius: 8px;
   border: 1px solid rgba(0,0,0,0.08);
-  font-weight: 600;
-}
-/* Niveau dropdown directement sous le bouton spécialité cliqué */
-.list-container {
-  position: relative; /* pour positionnement absolu relatif */
-}
-
-.niveau-wrapper {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 100%; /* juste en dessous du bouton */
-  margin-top: 12px;
-  background: white;
-  padding: 10px 16px;
-  border-radius: 12px;
-  box-shadow: 0 8px 18px rgba(24,18,54,0.12);
-  z-index: 10;
-  width: 220px;
-  display: flex; /* reste flex */
-  justify-content: center;
-  gap: 8px;
-}
-
-.niveau-wrapper label {
-  color: var(--purple-700);
-}
-
-.niveau-wrapper select {
-  min-width: 120px;
   font-weight: 600;
 }
 
