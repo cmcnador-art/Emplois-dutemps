@@ -269,4 +269,4 @@ async function loadSpecialites(){
     console.error(err);
     container.innerHTML = `<div class="placeholder" style="color:#b00">Erreur : ${err.message}</div>`;
   }
-}
+          }
